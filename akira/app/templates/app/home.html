@@ -2,8 +2,86 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 
+{% block banner-slider %}
 
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+       <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'app/images/banner/bg5.png' %}" class="d-block w-70" alt="banner image">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'app/images/banner/b2.jpg' %}" class="d-block w-100" alt="banner image">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'app/images/banner/b3.jpg' %}" class="d-block w-100" alt="banner image">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'app/images/banner/b4.jpg' %}" class="d-block w-100" alt="banner image">
+            </div>
+     </div>
+    </div>
+
+{% endblock banner-slider %}
+
+{% block information %}
+
+    <div class="container">
+        <div class="row bg-black text-center p-5 text-white border-bottom shadow">
+            <h1>DUNK BASKETBALL JERSEYS.</h1>
+            <small class="fs-5">Create your own identity with DUNK Custom Basketball Jerseys & Uniforms!
+                DUNK has been a custom basketball jersey specialist since 2004. With orders made on demand in our Brisbane and Vietnam workshops, our mission is to save you time with an easy ordering process and deliver an outstanding product.
+                Our basketball uniforms are available Australia-wide including Melbourne, Sydney, Adelaide, Perth + all regional areas and we especially pride ourselves on providing prompt customer service. All orders are shipped within 3-4 weeks.           
+                Junior and senior teams? Check! Small or large orders? No problem! Whether it’s an order for a social team, school, club or association, we have the experience and capability to make your squad look and feel great without complication and fuss.
+                Not a basketball team but still chasing jerseys? It’s cool, we got you. We regularly produce customised orders for gyms, bucks weekends, footy trips and tradies, amongst many other requests.    
+                Our MOQ (minimum order quantity) for new orders is 7 jerseys. No minimums apply to subsequent re-orders, you’re very welcome to re-order what you want – when you need it.  </small>
+        </div>
+    </div>
+{% endblock information %}
 {% block main-content %}
- <h1>Welcome Kit Products Site....</h1>
+<div class="container">
+    <h2 class="text-center">Kit Products</h2>
+    <br></br>
+    <div class="row container">
+        <div class="col-md-4 col-sm-4 mi-go wow fadeInUp"
+            data-wow-duration="1s" data-wow-delay="0.6s"
+            style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none;">
+            <div class="goodnesssec shirts smbg">
+                <a href="#">
+                    <div class="goodnessseccont text-center">
+                        <img src="{% static 'app/images/product/p1.png' %}" class="img-responsive center-block" alt="">
+                        <p class="kitspro">Shirts</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 mi-go wow fadeInUp"
+            data-wow-duration="1s" data-wow-delay="0.6s"
+            style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none;">
+            <div class="goodnesssec shirts curdbgpro">
+                <a href="#">
+                    <div class="goodnessseccont text-center">
+                        <img src="{% static 'app/images/product/p6.png' %}" class="img-responsive center-block" alt="">
+                        <p class="kitspro">Full Kit</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 mi-go wow fadeInUp"
+            data-wow-duration="1s" data-wow-delay="0.6s"
+            style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none;">
+            <div class="goodnesssec shirts kits">
+                <a href="#">
+                    <div class="goodnessseccont text-center">
+                        <img src="{% static 'app/images/product/p4.png' %}" class="img-responsive center-block" alt="">
+                        <p class="kitspro">Short Trouser</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br></br>
 {% endblock main-content %}
       
