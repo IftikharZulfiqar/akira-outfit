@@ -47,7 +47,7 @@
               </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Contact Us</a>
+              <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a> 
             </li>
               
               
@@ -65,7 +65,8 @@
                 aria-expanded="false">Profile</a>
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdownn">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'address' %}">Address</a></li>
                 <li><a class="dropdown-item" href="#">Orders</a></li>
                 <li><a class="dropdown-item" href="#">ChangePassword</a></li>
                 <li><a class="dropdown-item" href="#">Logout</a></li>
@@ -82,11 +83,11 @@
           </li> 
 
           <li class="nav-item mx-2">
-              <a  class="nav-link text-white" href="#">Login</a>
+              <a  class="nav-link text-white" href="{% url 'login' %}">Login</a>
           </li> 
 
           <li class="nav-item mx-2">
-            <a  class="nav-link text-white" href='#'>Registration</a>
+            <a  class="nav-link text-white" href="{% url 'customerregistration' %}">Registration</a>
           </li>
 
 
