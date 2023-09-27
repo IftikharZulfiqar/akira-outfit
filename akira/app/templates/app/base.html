@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{%static 'app/css/owl.carousel.min.css'%}" />
     <link rel="stylesheet" href="{%static 'app/css/all.min.css'%}" />
     <link rel="stylesheet" href="{%static 'app/css/style.css'%}" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 
     <title>Kit Products | {% block title %}{% endblock title %}</title>
 
@@ -26,6 +28,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if request.user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
@@ -42,15 +45,16 @@
 
                 </ul>
               </li>
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link text-white" href="#">About</a>
-              </li>
+              </li> {% endcomment %}
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a> 
             </li>
               
               
+
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -66,7 +70,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdownn">
                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
                 <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>
@@ -74,13 +78,14 @@
 
           </li>
           <li class="nav-item mx-2">
-              <a class="nav-link text-white"  href="#">Cart 4</a>
+              <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
           </li>
 
-          <li class="nav-item mx-2">
+          {% comment %} <li class="nav-item mx-2">
               <a  class="nav-link text-white"  href="#">Wishlist</a>
-          </li> 
-
+          </li>  {% endcomment %}
+          {% else %}
+ 
           <li class="nav-item mx-2">
               <a  class="nav-link text-white" href="{% url 'login' %}">Login</a>
           </li> 
@@ -88,6 +93,7 @@
           <li class="nav-item mx-2">
             <a  class="nav-link text-white" href="{% url 'customerregistration' %}">Registration</a>
           </li>
+          {% endif %}
 
 
         </ul>
@@ -97,6 +103,7 @@
         {% block banner-slider %}{% endblock banner-slider %}
         {% block information %}{% endblock information %}
         {% block main-content %}{% endblock main-content %}
+        {% block payment-gateway %}{% endblock payment-gateway %}
 
         <footer class="container-fluid fixed-bottom bg-success text-center p-2 mt-5">
           Copyright  :  2023 || Developer : Adeel Technology
@@ -110,11 +117,9 @@
 
 
 
-    <script script="{% static 'app/js/owl.carousel.min.js' %}"></script>
-    <script script="{% static 'app/js/all.min.js' %}"></script>
-    <script script="{% static 'app/js/myscript.js' %}"></script>
-
-
+    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'app/js/all.min.js' %}"></script>
+    <script src="{% static 'app/js/myscript.js' %}"></script>
 
 </body>
 </html>
