@@ -3,15 +3,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 STATE_CHOICES = (
-    ('Bahawalpur','Bahawalpur'),
-    ('Faisalabad','Faisalabad'),
+    ('Punjab','Punjab'),
+    ('Sindh','Sindh'),
     ('Gujranwala','Gujranwala'),
-    ('Lahore','Lahore'),
-    ('Mianwali','Mianwali'),
-    ('Multan','Multan'),
-    ('Rawalpindi','Rawalpindi'),
-    ('Sahiwal','Sahiwal'),
-    ('Sargodha','Sargodha'),
+    ('Khyber Pakhtunkhwa','Khyber Pakhtunkhwa'),
+    ('Balochistan','Balochistan'),
+    ('Gilgit-Baltistan','Gilgit-Baltistan'),
+    ('Azad Jammu and Kashmir ','Azad Jammu and Kashmir '),
+    ('Islamabad','Islamabad'),
 )
 
 Category_choices=(

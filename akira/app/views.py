@@ -7,17 +7,21 @@ from django.contrib import messages
 from django.db.models import Q
 from django.conf import settings
 from . models import Product,Customer,Cart,OrderPlaced,Payment
-
-
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator 
+ 
 
 # Create your views here.
+@login_required
 def home(request):
     totalitem = 0
     if request.user.is_authenticated:
         totalitem = len(Cart.objects.filter(user=request.user))
     return render(request,'app/home.html',locals())
 
+
+
+@login_required
 def contact(request):
     totalitem = 0
     if request.user.is_authenticated:
@@ -25,6 +29,7 @@ def contact(request):
     return render(request,"app/contact.html",locals())
 
 
+@method_decorator(login_required,name='dispatch')
 class CategoryView(View):
     def get(self,request,val):
         totalitem = 0
@@ -35,7 +40,7 @@ class CategoryView(View):
         return render(request,"app/category.html",locals())
 
 
-   
+@method_decorator(login_required,name='dispatch')
 class CategoryTitle(View):
     def get(self,request,val):
         product = Product.objects.filter(title=val)
@@ -46,6 +51,7 @@ class CategoryTitle(View):
         return render(request,"app/category.html",locals())     
 
 
+@method_decorator(login_required,name='dispatch')
 class ProductDetail(View):
     def get(self,request,pk):
         totalitem = 0
@@ -73,6 +79,8 @@ class CustomerRegistrationView(View):
         return render(request,"app/customerregistration.html",locals())
 
 
+
+@method_decorator(login_required,name='dispatch')
 class ProfileView(View):
     def get(self,request):
         form = CustomerProfileForm()
@@ -101,6 +109,8 @@ class ProfileView(View):
         return render(request,"app/profile.html",locals())
 
 
+
+@login_required
 def address(request):
     totalitem = 0
     if request.user.is_authenticated:
@@ -111,6 +121,8 @@ def address(request):
 
 
 
+
+@method_decorator(login_required,name='dispatch')
 class updateAddress(View):
     def get(self,request,pk):
         add = Customer.objects.get(pk=pk)
@@ -137,6 +149,9 @@ class updateAddress(View):
         return redirect("address")
 
 
+
+
+@login_required
 def add_to_cart(request):
     user=request.user
     product_id=request.GET.get('prod_id')
@@ -144,6 +159,10 @@ def add_to_cart(request):
     Cart(user=user,product=product).save()
     return redirect("/cart")
 
+
+
+
+@login_required
 def show_cart(request):
     user = request.user
     cart = Cart.objects.filter(user=user)
@@ -159,6 +178,8 @@ def show_cart(request):
 
 
 
+
+@method_decorator(login_required,name='dispatch')
 class checkout(View):
     def get(self,request):
         user=request.user
@@ -189,6 +210,8 @@ class checkout(View):
         return render(request,'app/check_out.html',locals())
 
 
+
+@login_required
 def payment_done(request):
     order_id = request.GET.get('order_id')
     payment_id = request.GET.get('payment_id')
@@ -210,9 +233,15 @@ def payment_done(request):
     return redirect("orders")
 
 
+
+@login_required
 def orders(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     order_placed=OrderPlaced.objects.filter(user_id = request.user.id)
     return render(request,'app/orders.html',locals())
+    
 
 
 

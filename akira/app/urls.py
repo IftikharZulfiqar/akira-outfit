@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
 from django.conf import settings
@@ -50,3 +51,9 @@ urlpatterns = [
 
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+admin.site.site_header = "Kit Product"
+admin.site.site_title = "Kit Product"
+admin.site.site_index_title = "Welcome to Kit Product"
