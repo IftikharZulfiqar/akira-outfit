@@ -54,6 +54,6 @@ urlpatterns = [
 
 
 
-admin.site.site_header = "Kit Product"
-admin.site.site_title = "Kit Product"
+admin.site.site_header = "Kit Products"
+admin.site.site_title = "Kit Products"
 admin.site.site_index_title = "Welcome to Kit Product"

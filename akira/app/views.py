@@ -236,9 +236,7 @@ def payment_done(request):
 
 @login_required
 def orders(request):
-    totalitem = 0
-    if request.user.is_authenticated:
-        totalitem = len(Cart.objects.filter(user=request.user))
+    
     order_placed=OrderPlaced.objects.filter(user_id = request.user.id)
     return render(request,'app/orders.html',locals())
     

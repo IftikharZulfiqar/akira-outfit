@@ -25,6 +25,22 @@ class PaymentModelAdmin(admin.ModelAdmin):
 
 @admin.register(OrderPlaced)
 class OrderPlacedModelAdmin(admin.ModelAdmin):
-   list_display = ['id', 'user', 'customer', 'product', 'quantity', 'ordered_date', 'status', 'payment']
+   list_display = ['id', 'user', 'customers', 'products', 'quantity', 'ordered_date', 'status', 'payment']
+   def customers(self,obj):
+      link = reverse("admin:app_product_change", args=[obj.customer.pk])
+      return format_html('<a href="{}">{}</a>',link, obj.customer.name)
+   
+
+
+   def products(self,obj):
+      link = reverse("admin:app_product_change", args=[obj.product.pk])
+      return format_html('<a href="{}">{}</a>',link, obj.product.title)
+   
+
+   
+   
+
+
+   
 
 
